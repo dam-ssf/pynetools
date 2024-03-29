@@ -14,7 +14,8 @@ El paquete `pynetools` contiene los siguientes comandos:
 | `mac_vendor`    | Devuelve el fabricante asociado a una dirección MAC (física).                                                                 |
 | `which_network` | A partir de una dirección IP y una máscara de red (o notación CIDR), muestra la dirección de la red a la que pertenece la IP. |
 
-> [!NOTE] Todos los comandos que requieran parámetros mostrarán una ayuda si estos no se especifican.
+> [!NOTE] 
+> Todos los comandos que requieran parámetros mostrarán una ayuda si estos no se especifican.
 
 ## Requerimientos
 
