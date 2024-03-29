@@ -1,5 +1,3 @@
-# pip install psutil
-
 import socket
 import psutil
 

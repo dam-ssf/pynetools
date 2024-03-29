@@ -1,7 +1,7 @@
 import sys
 import re
-from ip import IP
-from get_netmask import get_netmask
+from pynetools.ip import IP
+from pynetools.get_netmask import get_netmask
 
 def is_cidr(ip):
     return bool(re.match(r'\d+\.\d+\.\d+\.\d+/\d+', ip))

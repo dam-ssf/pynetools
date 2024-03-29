@@ -1,0 +1,37 @@
+[build-system]
+requires      = ["setuptools>=69.1.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pynetools"
+version = "0.0.1"
+description = "Herramientas de redes en Python para el módulo SSF"
+readme = "README.md"
+authors = [
+    { name = "fvarrui", email = "fvarrui@canariaseducacion.es" }
+]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["net", "network", "tools", "learning" ]
+dependencies = [
+    "psutil==5.9.8",
+    "scapy==2.5.0"
+]
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+dev = ["pip-tools", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/dam-ssf/pynetools"
+
+[project.scripts]
+get_netmask = "pynetools.get_netmask:main"
+get_network = "pynetools.get_network:main"
+list_nics = "pynetools.list_nics:main"
+mac_vendor = "pynetools.mac_vendor:main"
+which_network = "pynetools.which_network:main"

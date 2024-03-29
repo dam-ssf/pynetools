@@ -1,17 +1,19 @@
 import sys
+import os
 import re
-from ip import IP
-from get_netmask import get_netmask
+from pynetools.ip import IP
+from pynetools.get_netmask import get_netmask
 
 def is_cidr(ip):
     return bool(re.match(r'\d+\.\d+\.\d+\.\d+/\d+', ip))
 
 def main():
 
+    prog = os.path.basename(sys.argv[0])
     args = sys.argv[1:]
 
     if len(args) == 0:
-        print("Uso: python get_network.py [<ip> <netmask>|<cidr>]")
+        print(f"Uso: {prog} [<ip> <netmask>|<ip/cidr>]")
         sys.exit(1)
 
     if len(args) == 1 and is_cidr(args[0]):
@@ -21,9 +23,12 @@ def main():
         except ValueError as e:
             print("Número de bits de la máscara de red incorrecto")
             sys.exit(1)
-    else:
+    elif len(args) == 2:
         ip = args[0]
         netmask = args[1]
+    else:
+        print("Número de argumentos incorrecto")
+        sys.exit(1)
 
     try:
         ip = IP(ip)
