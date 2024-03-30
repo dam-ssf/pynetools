@@ -19,7 +19,7 @@ def main():
     vendor = mac.get_vendor()
 
     if not vendor:
-        vendor = 'Proveedor no encontrado'
+        vendor = 'Proveedor desconocido'
         
     print(f'Dirección MAC      : {mac}')
     print(f'Proveedor (vendor) : {vendor}')

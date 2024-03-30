@@ -1,43 +1,42 @@
 import sys
+import os
+from pynettools.network import Network
 from pynettools.ip import IP
-from pynettools.get_netmask import get_netmask
+from pynettools.netmask import Netmask
 
 def main():
 
-    prog = sys.argv[0]
+    prog = os.path.basename(sys.argv[0])
     args = sys.argv[1:]
 
     if len(args) == 0:
-        print(f"Uso: {prog} [<ip> <netmask>|<cidr>]")
+        print(f"Uso: {prog} [<ip> <netmask>|<ip/cidr>]")
         sys.exit(1)
-
-    if len(args) == 1 and IP.include_cidr(args[0]):
-        ip, bits = args[0].split('/')
-        try:
-            netmask = get_netmask(int(bits))
-        except ValueError as e:
-            print("Número de bits de la máscara de red incorrecto")
-            sys.exit(1)
-    else:
-        ip = args[0]
-        netmask = args[1]
 
     try:
-        ip = IP(ip)
+        if len(args) == 1:
+            network = Network(args[0])
+        elif len(args) == 2:
+            network = Network(args[0], args[1])
+        else:
+            raise ValueError("Número de argumentos incorrecto")
     except ValueError as e:
-        print("Dirección IP no válida")
-        sys.exit(1)
-    try:
-        netmask = IP(netmask)
-    except ValueError as e:
-        print("Máscara de red no válida")
+        print(e)
         sys.exit(1)
 
-    network = ip.get_network(netmask)
-
-    print(f"Red            : {network.to_bin()} ({network})")
-    print(f"Máscara de red : {netmask.to_bin()} ({netmask})")
-    print(f"Broadcast      : {(network | ~netmask).to_bin()} ({network | ~netmask})")
+    print(f'Dirección IP     : {network.ip}')
+    print(f'IP decimal       : {network.ip.to_int()}')
+    print(f'IP hexadecimal   : {hex(network.ip.to_int())}')
+    print(f'IP binario       : {network.ip.to_bin()}')
+    print(f'Dirección de red : {network.network}')
+    print(f'Máscara de red   : {network.netmask}')
+    print(f'Notación CIDR    : /{network.netmask.get_cidr()}')
+    print(f'Clase de red     : {network.network.get_class()}')
+    print(f'Tipo de red      : {network.network.get_type()}')
+    print(f'Número de hosts  : {network.get_total_hosts()} (usables {network.get_usable_hosts()})')
+    print(f'Primer host      : {network.get_first_host()}')
+    print(f'Último host      : {network.get_last_host()}')
+    print(f'Broadcast        : {network.get_broadcast()}')
 
 if __name__ == '__main__':
     main()

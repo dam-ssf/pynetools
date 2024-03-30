@@ -1,7 +1,7 @@
 import sys
 import os
 from pynettools.ip import IP
-from pynettools.netmask import get_netmask
+from pynettools.netmask import Netmask
 
 def main():
 
@@ -13,20 +13,11 @@ def main():
         sys.exit(1)
 
     if len(args) == 1 and IP.include_cidr(args[0]):
-        ip, bits = args[0].split('/')
-        try:
-            netmask = get_netmask(int(bits))
-        except ValueError as e:
-            print("Número de bits de la máscara de red incorrecto")
-            sys.exit(1)
+        ip, cidr = args[0].split('/')
+        netmask = int(cidr)
     elif len(args) == 2:
         ip = args[0]
         netmask = args[1]
-        try:
-            netmask = IP(netmask)
-        except ValueError as e:
-            print("Máscara de red no válida")
-            sys.exit(1)
     else:
         print("Número de argumentos incorrecto")
         sys.exit(1)
@@ -37,12 +28,25 @@ def main():
         print("Dirección IP no válida")
         sys.exit(1)
 
-    network = ip.get_network(netmask)
+    try:
+        netmask = Netmask(netmask)
+    except ValueError as e:
+        print("Máscara de red no válida")
+        sys.exit(1)
 
-    print(f"  IP             : {ip.to_bin()} ({ip})")
-    print(f"& Máscara de red : {netmask.to_bin()} ({netmask})")
-    print(f"  --------------   {'-' * 50}")
-    print(f"  Red            : {network.to_bin()} ({network})")
+    wildcard = netmask.get_wildcardmask()
+    network = ip.get_network(netmask)
+    host = ip.get_host(netmask)
+
+    print(f"IP               :   {ip.to_bin()} ({ip})")
+    print(f"Máscara de red   : & {netmask.to_bin()} ({netmask})")
+    print(f"----------------     {'-' * 50}")
+    print(f"Red              :   {network.to_bin()} ({network})")
+    print()
+    print(f"IP               :   {ip.to_bin()} ({ip})")
+    print(f"Máscara wildcard : & {wildcard.to_bin()} ({wildcard})")
+    print(f"----------------     {'-' * 50}")
+    print(f"Host             :   {host.to_bin()} ({host})")
 
 if __name__ == '__main__':
     main()
