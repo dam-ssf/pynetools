@@ -1,7 +1,7 @@
 import sys
 import os
-from pynetools.ip import IP
-from pynetools.netmask import get_netmask
+from pynettools.ip import IP
+from pynettools.netmask import get_netmask
 
 def main():
 

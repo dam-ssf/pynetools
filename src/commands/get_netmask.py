@@ -1,6 +1,6 @@
 import sys
 import os
-from pynetools.netmask import get_netmask, get_wildcardmask
+from pynettools.netmask import get_netmask, get_wildcardmask
 
 def main():
     prog = os.path.basename(sys.argv[0])

@@ -1,6 +1,6 @@
 import sys
 import os
-from pynetools.mac import Mac
+from pynettools.mac import Mac
 
 def main():
 

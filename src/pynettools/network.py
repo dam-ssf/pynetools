@@ -1,5 +1,5 @@
-from pynetools.ip import IP
-from pynetools.get_netmask import get_netmask
+from pynettools.ip import IP
+from pynettools.netmask import get_netmask
 
 class Network(IP):
 

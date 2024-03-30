@@ -1,4 +1,4 @@
-from pynetools.ip import IP
+from pynettools.ip import IP
 
 def get_netmask(bits):
     if not 0 <= bits <= 32:
