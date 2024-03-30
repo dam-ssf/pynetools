@@ -1,7 +1,9 @@
+import re
+
 class IP:
 
     def __init__(self, ip):
-        if not self._check_ip(ip):
+        if not IP.is_ip(ip):
             raise ValueError("Dirección IP inválida")
         self.ip = [ int(part) for part in ip.split('.') ]
 
@@ -11,17 +13,6 @@ class IP:
             part = bin(i)[2:]               # [2:] elimina 0b del inicio
             ip_bin.append(part.zfill(8))    # zfill(8) rellena con 0 a la izquierda
         return '.'.join(ip_bin)
-    
-    def _check_ip(self, ip):
-        ip = ip.split('.')
-        if len(ip) != 4:
-            return False
-        for i in ip:
-            if not i.isdigit():
-                return False
-            if not 0 <= int(i) <= 255:
-                return False
-        return True
     
     def get_class(self):
         if 1 <= self.ip[0] <= 126:
@@ -57,3 +48,19 @@ class IP:
         for part in self.ip:
             ip_str.append(str(part))
         return '.'.join(ip_str)
+    
+    @staticmethod
+    def is_ip(ip):
+        ip = ip.split('.')
+        if len(ip) != 4:
+            return False
+        for i in ip:
+            if not i.isdigit():
+                return False
+            if not 0 <= int(i) <= 255:
+                return False
+        return True
+
+    @staticmethod
+    def include_cidr(ip_cidr):
+        return re.match(r'\d+\.\d+\.\d+\.\d+/\d+', ip_cidr) is not None

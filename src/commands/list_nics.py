@@ -16,7 +16,10 @@ def get_nic(interface):
 def get_all_nics():
     return [ get_nic(interface) for interface in psutil.net_if_stats().keys() ]
 
-if __name__ == '__main__':    
+def main():
     print("Mis interfaces de red son: ")
     for interface in get_all_nics():
         print("- ", interface)
+
+if __name__ == '__main__':    
+    main()

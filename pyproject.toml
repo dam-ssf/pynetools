@@ -30,8 +30,8 @@ dev = ["pip-tools", "pytest"]
 Homepage = "https://github.com/dam-ssf/pynetools"
 
 [project.scripts]
-get_netmask = "pynetools.get_netmask:main"
-get_network = "pynetools.get_network:main"
-list_nics = "pynetools.list_nics:main"
-mac_vendor = "pynetools.mac_vendor:main"
-which_network = "pynetools.which_network:main"
+get_netmask = "commands.get_netmask:main"
+get_network = "commands.get_network:main"
+list_nics = "commands.list_nics:main"
+mac_vendor = "commands.mac_vendor:main"
+which_network = "commands.which_network:main"

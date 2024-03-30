@@ -1,8 +1,3 @@
-import re
-import sys
-
-# extracted from https://gist.github.com/aallan/b4bb86db86079509e6159810ae9bd3e4
-vendors = """
 000000	Officially Xerox
 000001	SuperLAN-2U
 000002	BBN (was internal usage only, no longer used)
@@ -23059,35 +23054,3 @@ FCFC48	Apple, Inc.
 FCFE77	Hitachi Reftechno, Inc.
 FCFEC2	Invensys Controls UK Limited
 FCFFAA	IEEE Registration Authority
-""".split('\n')
-
-def search_vendor(mac):
-    mac_vendor_part = mac.split(':')[0:3]
-    mac_vendor_part = ''.join(mac_vendor_part).upper()
-    pattern = re.compile(f"^{mac_vendor_part}\t(.+)$", re.IGNORECASE)
-    for line in vendors:
-        match = pattern.match(line)
-        if match:
-            return match.group(1)
-    return None
-
-def is_valid_mac(mac):
-    return re.match(r'^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$', mac)
-
-def main(arg):
-    if not is_valid_mac(arg):
-        print('Invalid MAC address')
-        sys.exit(1)
-    mac = arg.replace('-', ':').upper()
-    vendor = search_vendor(mac)
-    if vendor:
-        print(f'MAC address : {mac}')
-        print(f'Vendor      : {vendor}')
-    else:
-        print('Vendor not found')
-
-if __name__ == '__main__':    
-    if len(sys.argv) < 2:
-        print(f'Usage: {sys.argv[0]} <mac-address>')
-        sys.exit(1)
-    main(sys.argv[1])
