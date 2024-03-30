@@ -19,11 +19,11 @@ El paquete `pynetools` contiene los siguientes comandos:
 
 ## Requerimientos
 
-- Python 3.12
+- Python >= 3.12
 
 ## Instalación
 
-Para instalar este paquete directamente desde el repositorio Git
+Para instalar este paquete directamente desde el repositorio Git:
 
 ```bash
 pip install git+https://github.com/dam-ssf/pynetools.git
@@ -48,6 +48,12 @@ Instalamos el paquete en el entorno virtual en modo de edición:
 
 ```bash
 pip install -e .
+```
+
+¡Y a programar!
+
+```bash
+code .
 ```
 
 
