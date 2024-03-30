@@ -2,6 +2,9 @@ import re
 import os
 import sys
 
+"""
+Lista de proveedores (mac_vendors.txt) extraída de https://gist.github.com/aallan/b4bb86db86079509e6159810ae9bd3e4
+"""
 class Mac():
 
     vendors = []
