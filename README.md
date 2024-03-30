@@ -29,9 +29,9 @@ Para instalar este paquete directamente desde el repositorio Git:
 pip install git+https://github.com/dam-ssf/pynetools.git
 ```
 
-## Desarrollo
+## Para desarrolladores
 
-En caso de que queramos desarrollar este paquete, para modificar o añadir nuevas funcionalidades, debemos clonar el repositorio y entrar en el directorio:
+En caso de que queramos desarrollar este paquete, ya sea para modificar o añadir nuevas funcionalidades, debemos clonar el repositorio y entrar en el directorio:
 
 ```bash
 git clone https://github.com/dam-ssf/pynetools
@@ -56,4 +56,9 @@ pip install -e .
 code .
 ```
 
-
+> [!IMPORTANT]
+> Para generar el fichero de dependencias (si fuera necesario, porque hemos añadido una dependencia nueva o cambiado alguna versión):
+> 
+> ```bash
+> pip freeze --exclude-editable > requirements.txt
+> ```
