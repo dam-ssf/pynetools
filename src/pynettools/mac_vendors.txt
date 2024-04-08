@@ -15944,6 +15944,7 @@
 4CD08A	HUMAX Co., Ltd.
 4CD637	Qsono Electronics Co., Ltd
 4CD7B6	Helmer Scientific
+4CD98F	Dell Inc.
 4CD9C4	Magneti Marelli Automotive Electronics (Guangzhou) Co. Ltd
 4CDF3D	TEAM ENGINEERS ADVANCE TECHNOLOGIES INDIA PVT LTD
 4CE173	IEEE Registration Authority
