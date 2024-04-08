@@ -8,8 +8,10 @@ El paquete `pynetools` contiene los siguientes comandos:
 
 | Comando         | Descipción                                                                                                                    |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `calc_subnet`   | Calcula las subredes a partir de la red indicada y el número de subredes deseado.                                             |
 | `get_netmask`   | Devuelve la máscara de red y la máscara wildcard a partir del número de bits de la misma (notación CIDR).                     |
 | `get_network`   | Obtiene información de una red.                                                                                               |
+| `ip_to_bin`     | Convierte una dirección IP en su representación binaria.                                                                      |
 | `list_nics`     | Lista todas las interfaces de red del sistema.                                                                                |
 | `mac_vendor`    | Devuelve el fabricante asociado a una dirección MAC (física).                                                                 |
 | `which_network` | A partir de una dirección IP y una máscara de red (o notación CIDR), muestra la dirección de la red a la que pertenece la IP. |
@@ -19,7 +21,7 @@ El paquete `pynetools` contiene los siguientes comandos:
 
 ## Requerimientos
 
-- Python >= 3.12
+- Python >= 3.11
 
 ## Instalación
 
