@@ -33,18 +33,7 @@ def main():
         else:
             raise ValueError("Los argumentos no son válidos")
         
-        print(f'Dirección IP     : {network.ip}')
-        print(f'IP decimal       : {network.ip.to_int()}')
-        print(f'IP hexadecimal   : {hex(network.ip.to_int())}')
-        print(f'IP binario       : {network.ip.to_bin()}')
-        print(f'Dirección de red : {network.network}')
-        print(f'Máscara de red   : {network.netmask}')
-        print(f'Notación CIDR    : /{network.netmask.get_cidr()}')
-        print(f'Clase de red     : {network.network.get_class()}')
-        print(f'Tipo de red      : {network.network.get_type()}')
-        print(f'Número de hosts  : {network.get_total_hosts()} (usables {network.get_usable_hosts()})')
-        print(f'Rango de hosts   : {network.get_first_host()} - {network.get_last_host()}')
-        print(f'Broadcast        : {network.get_broadcast()}')
+        print(network)
 
     except ValueError as e:
         print(e)

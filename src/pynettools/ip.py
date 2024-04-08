@@ -84,7 +84,7 @@ class IP:
     def to_int(self):
         return (self.ip[0] << 24) + (self.ip[1] << 16) + (self.ip[2] << 8) + self.ip[3]
     
-    def __str__(self):
+    def __str__(self) -> str:
         ip_str = []
         for part in self.ip:
             ip_str.append(str(part))

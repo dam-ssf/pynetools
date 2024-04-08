@@ -32,3 +32,19 @@ class Network():
         wildcard = self.netmask.get_wildcardmask()        
         return self.network | wildcard
     
+    def __str__(self) -> str:
+        return f"""
+Dirección IP     : {self.ip}
+IP decimal       : {self.ip.to_int()}
+IP hexadecimal   : {hex(self.ip.to_int())}
+IP binario       : {self.ip.to_bin()}
+Dirección de red : {self.network}
+Máscara de red   : {self.netmask}
+Notación CIDR    : /{self.netmask.get_cidr()}
+Clase de red     : {self.network.get_class()}
+Tipo de red      : {self.network.get_type()}
+Número de hosts  : {self.get_total_hosts()} (usables {self.get_usable_hosts()})
+Rango de hosts   : {self.get_first_host()} - {self.get_last_host()}
+Broadcast        : {self.get_broadcast()}
+        """
+    
