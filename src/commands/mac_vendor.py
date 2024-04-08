@@ -15,8 +15,12 @@ def main():
     if Mac.is_vendor(mac_str):
         mac_str = mac_str.replace('-', ':').upper() + ':00:00:00'
 
-    mac = Mac(mac_str)
-    vendor = mac.get_vendor()
+    try:
+        mac = Mac(mac_str)
+        vendor = mac.get_vendor()
+    except Exception as e:
+        print(f'Error: {e}')
+        sys.exit(1)
 
     if not vendor:
         vendor = 'Proveedor desconocido'
