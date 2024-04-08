@@ -3,7 +3,7 @@ requires      = ["setuptools>=69.1.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pynetools"
+name = "pynettools"
 version = "0.0.1"
 description = "Herramientas de redes en Python para el módulo SSF"
 readme = "README.md"
@@ -21,7 +21,7 @@ dependencies = [
     "psutil==5.9.8",
     "scapy==2.5.0"
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 
 [project.optional-dependencies]
 dev = ["pip-tools", "pytest"]

@@ -2,6 +2,9 @@ import psutil
 import socket
 
 def get_nic(interface):
+    """
+    Devuelve información de la interfaz de red especificada
+    """
     data = {
         'name': interface
     } 

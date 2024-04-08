@@ -1,6 +1,6 @@
 import sys
 import os
-from pynettools.netmask import get_netmask, get_wildcardmask
+from pynettools.netmask import Netmask
 
 def main():
     prog = os.path.basename(sys.argv[0])
@@ -10,8 +10,8 @@ def main():
         sys.exit(1)
     bits = int(args[0])
     try:
-        netmask = get_netmask(bits)
-        wildcard = get_wildcardmask(bits)
+        netmask = Netmask(bits)
+        wildcard = netmask.get_wildcardmask()
     except ValueError as e:
         print(e)
         sys.exit(1)
