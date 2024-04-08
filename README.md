@@ -41,7 +41,7 @@ cd pynetools
 Creamos un entorno virtual:
 
 ```bash
-python -n venv venv
+python -m venv venv
 ```
 
 Instalamos el paquete en el entorno virtual en modo de edición:
