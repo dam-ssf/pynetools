@@ -4,7 +4,7 @@ Herramientas de redes desarrolladas en Python para el módulo profesional SSF (S
 
 ## Comandos
 
-El paquete `pynetools` contiene los siguientes comandos:
+El paquete `pynettools` contiene los siguientes comandos:
 
 | Comando         | Descipción                                                                                                                    |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
