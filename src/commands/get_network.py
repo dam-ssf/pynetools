@@ -1,5 +1,6 @@
 import sys
 import os
+from pynettools.ip import IP
 from pynettools.network import Network
 from pynettools.nic import get_nic
 
@@ -18,6 +19,9 @@ def main():
 
             ip_cidr = args[0]
             network = Network(ip_cidr)
+
+            if not IP.include_cidr(ip_cidr):
+                print(f'AVISO: Usando máscara de red por defecto para la dirección IP especificada {network.netmask}')
 
         elif len(args) == 2:
 

@@ -89,7 +89,7 @@ class IP:
         for part in self.ip:
             ip_str.append(str(part))
         return '.'.join(ip_str)
-    
+            
     @staticmethod
     def is_ip(ip):
         ip = ip.split('.')

@@ -11,9 +11,13 @@ class Network():
             self.netmask = netmask
         elif type(netmask) is str:
             self.netmask = Netmask(netmask)
+        elif not netmask:
+            self.netmask = None
         else:
-            raise ValueError("Máscara de red inválida")        
+            raise ValueError(f"Máscara de red inválida: {netmask}")
         self.ip = IP(ip)
+        if not self.netmask:
+            self.netmask = Netmask.get_default_netmask(self.ip)
         self.network = self.ip.get_network(self.netmask)
 
     def get_first_host(self):
@@ -47,4 +51,3 @@ Número de hosts  : {self.get_total_hosts()} (usables {self.get_usable_hosts()})
 Rango de hosts   : {self.get_first_host()} - {self.get_last_host()}
 Broadcast        : {self.get_broadcast()}
         """
-    

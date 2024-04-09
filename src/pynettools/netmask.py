@@ -42,3 +42,15 @@ class Netmask(IP):
             return not '01' in netmask.to_bin().replace('.', '')
         except ValueError:
             return False
+        
+    @staticmethod
+    def get_default_netmask(ip):
+        match ip.get_class():
+            case 'A':
+                return Netmask('255.0.0.0')
+            case 'B':
+                return Netmask('255.255.0.0')
+            case 'C':
+                return Netmask('255.255.255.0')
+            case _:
+                return None
