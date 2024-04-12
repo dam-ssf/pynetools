@@ -33,7 +33,7 @@ def main():
         subnets = network.subnets(count)        
 
         print(f"Obteniendo {len(subnets['nets'])} subredes de {network.ip}/{network.netmask.get_cidr()} ... ")
-        print(f"Se necesitan {subnets['bits_for_subnets']} bits para {len(subnets['nets'])} subredes => calculando 2^{subnets['bits_for_subnets']} = {subnets['real_subnets']} subredes  ...\n")
+        print(f"Se han necesitado {subnets['bits_for_subnets']} bits para {len(subnets['nets'])} subredes => calculadas 2^{subnets['bits_for_subnets']} = {subnets['real_subnets']} subredes  ...\n")
 
         for i, subnet in enumerate(subnets['nets']):
             print(f"* Subred {i + 1}:")
