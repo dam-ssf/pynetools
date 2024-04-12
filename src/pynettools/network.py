@@ -1,3 +1,4 @@
+import math
 from pynettools.ip import IP
 from pynettools.netmask import Netmask
 
@@ -36,6 +37,31 @@ class Network():
         wildcard = self.netmask.get_wildcardmask()        
         return self.network | wildcard
     
+    def subnets(self, subnets):
+        if subnets < 0:
+            raise ValueError("El número de subredes no puede ser negativo")
+
+        bits_for_subnets = Network.calc_bits_for_subnets(subnets)
+        bits_host = self.netmask.gets_bits_host()
+        real_subnets = 2 ** bits_for_subnets 
+
+        if bits_for_subnets > bits_host:
+            raise ValueError("No se pueden obtener tantas subredes")
+
+        subnets = {
+            "bits_for_subnets": bits_for_subnets,
+            "bits_host": bits_host,
+            "real_subnets": real_subnets,
+            "nets": []
+        }
+
+        for i in range(real_subnets):
+            offset = i * 2 ** (bits_host - bits_for_subnets)
+            subnet = Network(self.network + offset, Netmask(self.netmask.get_cidr() + bits_for_subnets))
+            subnets['nets'].append(subnet)
+        
+        return subnets
+    
     def __str__(self) -> str:
         return f"""
 Dirección IP     : {self.ip}
@@ -51,3 +77,9 @@ Número de hosts  : {self.get_total_hosts()} (usables {self.get_usable_hosts()})
 Rango de hosts   : {self.get_first_host()} - {self.get_last_host()}
 Broadcast        : {self.get_broadcast()}
         """
+    
+    @staticmethod
+    def calc_bits_for_subnets(subnets):
+        if subnets == 0:
+            return 0
+        return math.ceil(math.log2(subnets))

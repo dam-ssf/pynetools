@@ -19,6 +19,9 @@ class Netmask(IP):
 
     def get_wildcardmask(self):
         return ~self
+    
+    def gets_bits_host(self):
+        return 32 - self.cidr
 
     @staticmethod
     def netmask_to_cidr(netmask):
