@@ -29,7 +29,7 @@ El paquete `pynettools` contiene los siguientes comandos:
 Para instalar este paquete directamente desde el repositorio Git:
 
 ```bash
-pip install git+https://github.com/dam-ssf/pynetools.git
+pip install git+https://github.com/dam-ssf/pynettools.git
 ```
 
 ## Para desarrolladores
@@ -37,8 +37,8 @@ pip install git+https://github.com/dam-ssf/pynetools.git
 En caso de que queramos desarrollar este paquete, ya sea para modificar o añadir nuevas funcionalidades, debemos clonar el repositorio y entrar en el directorio:
 
 ```bash
-git clone https://github.com/dam-ssf/pynetools
-cd pynetools
+git clone https://github.com/dam-ssf/pynettools
+cd pynettools
 ```
 
 Creamos un entorno virtual:
